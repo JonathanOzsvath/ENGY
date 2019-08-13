@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+ENGY/__pycache__/
+ENGY_App/__pycache__/
+ENGY_App/migrations/__pycache__/
+venv/
