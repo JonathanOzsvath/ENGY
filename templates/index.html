@@ -2,5 +2,21 @@
 {% load staticfiles %}
 
 {% block content %}
-    <p id="vmi">sassa</p>
+    <button></button>
+    <div id="itemTree">
+        <ul>
+            {% for item in items %}
+                {% if item.isMainCategory %}
+                    <li>
+                        <a href="#demo" data-toggle="collapse">{{ item.description }}</a>
+{#                        {% if not item.isMainCategory %}#}
+                            <div id="demo" class="collapse">
+                                alksdj
+                            </div>
+{#                        {% endif %}#}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

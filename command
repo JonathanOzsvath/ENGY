@@ -1,3 +1,6 @@
+//Create superuser
+python manage.py createsuperuser
+
 //Database migration
 python3 manage.py makemigrations
 python3 manage.py migrate
