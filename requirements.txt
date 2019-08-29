@@ -1,8 +1,13 @@
 Django==2.2.4
 django-appconf==1.0.3
 django-compressor==2.3
+django-js-asset==1.2.2
 django-sass-processor==0.7.3
+django-treenode==0.13.4
 libsass==0.19.2
+Pillow==6.1.0
+psycopg2==2.8.3
+public==2019.4.13
 pytz==2019.2
 rcssmin==1.0.6
 rjsmin==1.1.0

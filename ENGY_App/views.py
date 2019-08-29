@@ -1,8 +1,11 @@
 from django.shortcuts import render
-from .models import Item
 
 
 # Create your views here.
+from ENGY_App.models import Category
+
+
 def home(request):
-    items = Item.objects.all()
-    return render(request, 'index.html', {'items': items})
+    rootList = Category.get_roots()
+
+    return render(request, 'index.html', {'rootList': rootList})

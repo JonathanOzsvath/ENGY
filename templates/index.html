@@ -2,20 +2,88 @@
 {% load staticfiles %}
 
 {% block content %}
-    <button></button>
     <div id="itemTree">
         <ul>
-            {% for item in items %}
-                {% if item.isMainCategory %}
-                    <li>
-                        <a href="#demo" data-toggle="collapse">{{ item.description }}</a>
-{#                        {% if not item.isMainCategory %}#}
-                            <div id="demo" class="collapse">
-                                alksdj
-                            </div>
-{#                        {% endif %}#}
-                    </li>
-                {% endif %}
+            {% for item in rootList %}
+                <li>
+                    <a href="#firstLevel{{ forloop.counter }}" data-toggle="collapse">{{ item.description }}</a>
+                    <div id="firstLevel{{ forloop.counter }}" class="collapse">
+                        <ul>
+                            {% for child1 in item.children %}
+                                <li>
+                                    <a href="#secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                       data-toggle="collapse">{{ child1.itemNumber }} {{ child1.description }}</a>
+                                    <div id="secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}" class="collapse">
+                                        <ul>
+                                            {% for child2 in child1.children %}
+                                                <li>
+                                                    <a href="#thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                       data-toggle="collapse">{{ child2.itemNumber }} {{ child2.description }}</a>
+                                                    <div id="thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                         class="collapse">
+                                                        <ul>
+                                                            {% for child3 in child2.children %}
+                                                                <li>
+                                                                    <a href="#fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                       data-toggle="collapse">{{ child3.itemNumber }} {{ child3.description }}</a>
+                                                                    <div id="fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                         class="collapse">
+                                                                        <ul>
+                                                                            {% for child4 in child3.children %}
+                                                                                <li>
+                                                                                    <a href="#fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                       data-toggle="collapse">{{ child4.itemNumber }} {{ child4.description }}</a>
+                                                                                    <div id="fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                         class="collapse">
+                                                                                        <ul>
+                                                                                            {% for child5 in child4.children %}
+                                                                                                <li>
+                                                                                                    <a href="#sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                       data-toggle="collapse">{{ child5.itemNumber }} {{ child5.description }}</a>
+                                                                                                    <div id="sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                         class="collapse">
+                                                                                                        <ul>
+                                                                                                            {% for child6 in child5.children %}
+                                                                                                                <li>
+                                                                                                                    {{ child6.itemNumber }} {{ child6.description }}
+                                                                                                                </li>
+                                                                                                            {% endfor %}
+                                                                                                        </ul>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            {% endfor %}
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                </li>
+                                                                            {% endfor %}
+                                                                        </ul>
+                                                                    </div>
+                                                                </li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {#                <a href="#firstLevel1" data-toggle="collapse">Egyéb kiegészítő erőforrások</a>#}
+                    {#                <div id="firstLevel1" class="collapse">#}
+                    {#                    <ul>#}
+                    {#                        {% for item in rootList %}#}
+                    {#                            {% if item.itemNumber in firstLevelList %}#}
+                    {#                                <li>#}
+                    {#                                    <a href="#secondLevel{{ forloop.counter }}"#}
+                    {#                                       data-toggle="collapse">{{ item.description }}</a>#}
+                    {#                                </li>#}
+                    {#                            {% endif %}#}
+                    {#                        {% endfor %}#}
+                    {#                    </ul>#}
+                    {#                </div>#}
+                </li>
             {% endfor %}
         </ul>
     </div>

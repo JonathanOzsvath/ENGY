@@ -2,11 +2,11 @@
 python manage.py createsuperuser
 
 //Database migration
-python3 manage.py makemigrations
-python3 manage.py migrate
+python manage.py makemigrations
+python manage.py migrate
 
 //Collect static files
-python3 manage.py collectstatic
+python manage.py collectstatic
 
 //Make requirements.txt
 pip freeze > requirements.txt
