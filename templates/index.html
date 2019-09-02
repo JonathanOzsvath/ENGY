@@ -2,44 +2,92 @@
 {% load staticfiles %}
 
 {% block content %}
-    <div id="itemTree">
+    <div id="itemTree" class="container">
         <ul>
             {% for item in rootList %}
                 <li>
-                    <a href="#firstLevel{{ forloop.counter }}" data-toggle="collapse">{{ item.description }}</a>
+                    <div class="row">
+                        <div class="col-8">
+                            <a href="#firstLevel{{ forloop.counter }}" data-toggle="collapse">{{ item.description }}</a>
+                        </div>
+                        <div class="col-4 text-right">
+                            <a href="#"><i class="fas fa-plus"></i></a>
+                            <a href="#"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
                     <div id="firstLevel{{ forloop.counter }}" class="collapse">
                         <ul>
                             {% for child1 in item.children %}
                                 <li>
-                                    <a href="#secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                                       data-toggle="collapse">{{ child1.itemNumber }} {{ child1.description }}</a>
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <a href="#secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                               data-toggle="collapse">{{ child1.itemNumber }} {{ child1.description }}</a>
+                                        </div>
+                                        <div class="col-4 text-right">
+                                            <a href="#"><i class="fas fa-plus"></i></a>
+                                            <a href="#"><i class="fas fa-trash"></i></a>
+                                        </div>
+                                    </div>
                                     <div id="secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}" class="collapse">
                                         <ul>
                                             {% for child2 in child1.children %}
                                                 <li>
-                                                    <a href="#thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                                                       data-toggle="collapse">{{ child2.itemNumber }} {{ child2.description }}</a>
+                                                    <div class="row">
+                                                        <div class="col-8">
+                                                            <a href="#thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                               data-toggle="collapse">{{ child2.itemNumber }} {{ child2.description }}</a>
+                                                        </div>
+                                                        <div class="col-4 text-right">
+                                                            <a href="#"><i class="fas fa-plus"></i></a>
+                                                            <a href="#"><i class="fas fa-trash"></i></a>
+                                                        </div>
+                                                    </div>
                                                     <div id="thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
                                                          class="collapse">
                                                         <ul>
                                                             {% for child3 in child2.children %}
                                                                 <li>
-                                                                    <a href="#fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                                                                       data-toggle="collapse">{{ child3.itemNumber }} {{ child3.description }}</a>
+                                                                    <div class="row">
+                                                                        <div class="col-8">
+                                                                            <a href="#fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                               data-toggle="collapse">{{ child3.itemNumber }} {{ child3.description }}</a>
+                                                                        </div>
+                                                                        <div class="col-4 text-right">
+                                                                            <a href="#"><i class="fas fa-plus"></i></a>
+                                                                            <a href="#"><i class="fas fa-trash"></i></a>
+                                                                        </div>
+                                                                    </div>
                                                                     <div id="fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
                                                                          class="collapse">
                                                                         <ul>
                                                                             {% for child4 in child3.children %}
                                                                                 <li>
-                                                                                    <a href="#fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                                                                                       data-toggle="collapse">{{ child4.itemNumber }} {{ child4.description }}</a>
+                                                                                    <div class="row">
+                                                                                        <div class="col-8">
+                                                                                            <a href="#fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                               data-toggle="collapse">{{ child4.itemNumber }} {{ child4.description }}</a>
+                                                                                        </div>
+                                                                                        <div class="col-4 text-right">
+                                                                                            <a href="#"><i class="fas fa-plus"></i></a>
+                                                                                            <a href="#"><i class="fas fa-trash"></i></a>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <div id="fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
                                                                                          class="collapse">
                                                                                         <ul>
                                                                                             {% for child5 in child4.children %}
                                                                                                 <li>
-                                                                                                    <a href="#sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
-                                                                                                       data-toggle="collapse">{{ child5.itemNumber }} {{ child5.description }}</a>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-8">
+                                                                                                            <a href="#sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                               data-toggle="collapse">{{ child5.itemNumber }} {{ child5.description }}</a>
+                                                                                                        </div>
+                                                                                                        <div class="col-4 text-right">
+                                                                                                            <a href="#"><i class="fas fa-plus"></i></a>
+                                                                                                            <a href="#"><i class="fas fa-trash"></i></a>
+                                                                                                        </div>
+                                                                                                    </div>
                                                                                                     <div id="sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
                                                                                                          class="collapse">
                                                                                                         <ul>
