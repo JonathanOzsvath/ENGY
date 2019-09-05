@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="marginTop">
+        <form enctype="multipart/form-data" action="add" method="post">
+            {% csrf_token %}
+            <div class="field-wrapper">
+                {{ form.as_p }}
+            </div>
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+{% endblock %}
