@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="card marginTop">
+        <div class="card-header">
+            {% if item.itemNumber != None %}
+                {{ item.itemNumber }} {{ item.description }}
+            {% else %}
+                {{ item.description }}
+            {% endif %}
+        </div>
+        <div class="card-body">
+            <p>Mennyiség: {{ item.quantity }}</p>
+            <p>Egység: {{ item.quantity }}</p>
+            <p>Anyag egységár: {{ item.quantity }}</p>
+            <p>Díj egységre: {{ item.quantity }}</p>
+        </div>
+    </div>
+{% endblock %}

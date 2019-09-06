@@ -11,7 +11,6 @@ class Category(TreeNodeModel):
     unit = models.CharField(max_length=20, null=True, blank=True)
     unitPriceOfMaterial = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
     pricePerUnit = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True)
-    isMainCategory = models.BooleanField()
 
     class Meta(TreeNodeModel.Meta):
         verbose_name = 'Category'

@@ -2,4 +2,12 @@
   margin-top: 100px;
 }
 
+.row:hover {
+  background-color: #ECECEC;
+}
+
+#itemTree ul {
+  list-style: none;
+}
+
 /*# sourceMappingURL=main.css.map */

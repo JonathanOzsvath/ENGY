@@ -14,21 +14,25 @@ def home(request):
 
 
 def add(request, item_id):
-    parent = Category.objects.get(id=item_id)
+    item = Category.objects.get(id=item_id)
+    regex = re.compile(r'\d{2}(-\d{3})?$')
 
     newChildItemNumber = ''
-    lastChildItemNumber = parent.get_last_child().itemNumber
-    if parent.itemNumber != None:
-        if '.' in lastChildItemNumber:
-            newChildItemNumber = '{}.{}'.format(parent.itemNumber, int(lastChildItemNumber.split('.')[-1]) + 1)
-        elif re.search(re.compile(r'\d{3}-\d{3}-\d{3}'), newChildItemNumber):
-            newChildItemNumber = '{}.{}'.format(parent.itemNumber, 1)
-        elif '-' in lastChildItemNumber:
-            newChildItemNumber = '{}-{:03}'.format(parent.itemNumber, int(lastChildItemNumber.split('-')[-1]) + 1)
+    if item.tn_children_count == 0:
+        lastChildItemNumber = item.itemNumber
+        if regex.match(lastChildItemNumber):
+            newChildItemNumber = '{}-{:03}'.format(item.itemNumber, 1)
         else:
-            newChildItemNumber = '{}-{:03}'.format(parent.itemNumber, 1)
+            newChildItemNumber = '{}.{}'.format(item.itemNumber, 1)
     else:
-        newChildItemNumber = '{:02}'.format(int(lastChildItemNumber.split('-')[-1]) + 1)
+        lastChildItemNumber = item.get_last_child().itemNumber
+        if item.itemNumber != None:
+            if regex.match(lastChildItemNumber):
+                newChildItemNumber = '{}-{:03}'.format(item.itemNumber, int(lastChildItemNumber.split('-')[-1]) + 1)
+            else:
+                newChildItemNumber = '{}.{}'.format(item.itemNumber, int(lastChildItemNumber.split('.')[-1]) + 1)
+        else:
+            newChildItemNumber = '{:02}'.format(int(lastChildItemNumber.split('-')[-1]) + 1)
 
     form = CategoryForm(initial={'tn_parent': item_id, 'itemNumber': newChildItemNumber})
 
@@ -46,3 +50,8 @@ def delete(request, item_id):
     item = Category.objects.get(id=item_id)
     item.delete()
     return HttpResponseRedirect('/')
+
+
+def details(request, item_id):
+    item = Category.objects.get(id=item_id)
+    return render(request, 'details.html', {'item': item})
