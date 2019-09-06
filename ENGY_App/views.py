@@ -55,3 +55,16 @@ def delete(request, item_id):
 def details(request, item_id):
     item = Category.objects.get(id=item_id)
     return render(request, 'details.html', {'item': item})
+
+
+def edit(request, item_id):
+    item = Category.objects.get(id=item_id)
+
+    if request.method == "POST":
+        form = CategoryForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save(commit=True)
+        return HttpResponseRedirect('/')
+    else:
+        form = CategoryForm(instance=item)
+    return render(request, 'edit.html', {'form': form})

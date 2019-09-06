@@ -11,8 +11,9 @@
                             <a href="#firstLevel{{ forloop.counter }}" data-toggle="collapse">{{ item.description }}</a>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{% url 'addItem' item_id=item.id %}"><i class="fas fa-plus"></i></a>
+                            <a href="{% url 'add' item_id=item.id %}"><i class="fas fa-plus"></i></a>
                             <a href="{% url 'details' item_id=item.id %}"><i class="fas fa-list"></i></a>
+                            <a href="{% url 'edit' item_id=item.id %}"><i class="fas fa-edit"></i></a>
                             <a href="{% url 'deleteItem' item_id=item.id %}"><i class="fas fa-trash"></i></a>
                         </div>
                     </div>
@@ -26,8 +27,9 @@
                                                data-toggle="collapse">{{ child1.itemNumber }} {{ child1.description }}</a>
                                         </div>
                                         <div class="col-4 text-right">
-                                            <a href="{% url 'addItem' item_id=child1.id %}"><i class=" fas fa-plus"></i></a>
+                                            <a href="{% url 'add' item_id=child1.id %}"><i class=" fas fa-plus"></i></a>
                                             <a href="{% url 'details' item_id=child1.id %}"><i class="fas fa-list"></i></a>
+                                            <a href="{% url 'edit' item_id=child1.id %}"><i class="fas fa-edit"></i></a>
                                             <a href="{% url 'deleteItem' item_id=child1.id %}"><i class="fas fa-trash"></i></a>
                                         </div>
                                     </div>
@@ -41,8 +43,9 @@
                                                                data-toggle="collapse">{{ child2.itemNumber }} {{ child2.description }}</a>
                                                         </div>
                                                         <div class="col-4 text-right">
-                                                            <a href="{% url 'addItem' item_id=child2.id %}"><i class=" fas fa-plus"></i></a>
+                                                            <a href="{% url 'add' item_id=child2.id %}"><i class=" fas fa-plus"></i></a>
                                                             <a href="{% url 'details' item_id=child2.id %}"><i class="fas fa-list"></i></a>
+                                                            <a href="{% url 'edit' item_id=child2.id %}"><i class="fas fa-edit"></i></a>
                                                             <a href="{% url 'deleteItem' item_id=child2.id %}"><i class="fas fa-trash"></i></a>
                                                         </div>
                                                     </div>
@@ -57,8 +60,9 @@
                                                                                data-toggle="collapse">{{ child3.itemNumber }} {{ child3.description }}</a>
                                                                         </div>
                                                                         <div class="col-4 text-right">
-                                                                            <a href="{% url 'addItem' item_id=child3.id %}"><i class=" fas fa-plus"></i></a>
+                                                                            <a href="{% url 'add' item_id=child3.id %}"><i class=" fas fa-plus"></i></a>
                                                                             <a href="{% url 'details' item_id=child3.id %}"><i class="fas fa-list"></i></a>
+                                                                            <a href="{% url 'edit' item_id=child3.id %}"><i class="fas fa-edit"></i></a>
                                                                             <a href="{% url 'deleteItem' item_id=child3.id %}"><i class="fas fa-trash"></i></a>
                                                                         </div>
                                                                     </div>
@@ -73,8 +77,9 @@
                                                                                                data-toggle="collapse">{{ child4.itemNumber }} {{ child4.description }}</a>
                                                                                         </div>
                                                                                         <div class="col-4 text-right">
-                                                                                            <a href="{% url 'addItem' item_id=child4.id %}"><i class=" fas fa-plus"></i></a>
+                                                                                            <a href="{% url 'add' item_id=child4.id %}"><i class=" fas fa-plus"></i></a>
                                                                                             <a href="{% url 'details' item_id=child4.id %}"><i class="fas fa-list"></i></a>
+                                                                                            <a href="{% url 'edit' item_id=child4.id %}"><i class="fas fa-edit"></i></a>
                                                                                             <a href="{% url 'deleteItem' item_id=child4.id %}"><i class="fas fa-trash"></i></a>
                                                                                         </div>
                                                                                     </div>
@@ -89,8 +94,9 @@
                                                                                                                data-toggle="collapse">{{ child5.itemNumber }} {{ child5.description }}</a>
                                                                                                         </div>
                                                                                                         <div class="col-4 text-right">
-                                                                                                            <a href="{% url 'addItem' item_id=child5.id %}"><i class="fas fa-plus"></i></a>
+                                                                                                            <a href="{% url 'add' item_id=child5.id %}"><i class="fas fa-plus"></i></a>
                                                                                                             <a href="{% url 'details' item_id=child5.id %}"><i class="fas fa-list"></i></a>
+                                                                                                            <a href="{% url 'edit' item_id=child5.id %}"><i class="fas fa-edit"></i></a>
                                                                                                             <a href="{% url 'deleteItem' item_id=child5.id %}"><i class="fas fa-trash"></i></a>
                                                                                                         </div>
                                                                                                     </div>
@@ -105,6 +111,7 @@
                                                                                                                         </div>
                                                                                                                         <div class="col-4 text-right">
                                                                                                                             <a href="{% url 'details' item_id=child6.id %}"><i class="fas fa-list"></i></a>
+                                                                                                                            <a href="{% url 'edit' item_id=child6.id %}"><i class="fas fa-edit"></i></a>
                                                                                                                             <a href="{% url 'deleteItem' item_id=child6.id %}"><i class="fas fa-trash"></i></a>
                                                                                                                         </div>
                                                                                                                     </div>

@@ -12,9 +12,9 @@
         </div>
         <div class="card-body">
             <p>Mennyiség: {{ item.quantity }}</p>
-            <p>Egység: {{ item.quantity }}</p>
-            <p>Anyag egységár: {{ item.quantity }}</p>
-            <p>Díj egységre: {{ item.quantity }}</p>
+            <p>Egység: {{ item.unit }}</p>
+            <p>Anyag egységár: {{ item.unitPriceOfMaterial }}</p>
+            <p>Díj egységre: {{ item.pricePerUnit }}</p>
         </div>
     </div>
 {% endblock %}
