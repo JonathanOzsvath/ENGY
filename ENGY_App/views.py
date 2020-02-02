@@ -8,9 +8,13 @@ from ENGY_App.models import Category
 
 
 def home(request):
+    return render(request, 'index.html')
+
+
+def categories(request):
     rootList = Category.get_roots()
 
-    return render(request, 'index.html', {'rootList': rootList})
+    return render(request, 'categories.html', {'rootList': rootList})
 
 
 def add(request, item_id):
