@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="marginTop">
+        <a type="button" class="btn btn-success " href={% url 'offer' %}><i class="fas fa-plus"></i> Új ajánlat készítése</a>
+        <table class="table">
+            <tr>
+                <th>Név</th>
+                <th>Dátum</th>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

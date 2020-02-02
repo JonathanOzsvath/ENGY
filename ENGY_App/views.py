@@ -72,3 +72,11 @@ def edit(request, item_id):
     else:
         form = CategoryForm(instance=item)
     return render(request, 'edit.html', {'form': form})
+
+
+def offers(request):
+    return render(request, 'offers.html')
+
+
+def offer(request):
+    return render(request, 'offer.html')
