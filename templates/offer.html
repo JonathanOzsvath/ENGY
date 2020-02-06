@@ -2,7 +2,113 @@
 {% load static %}
 
 {% block content %}
-    <div class="marginTop">
-        <a id="newCategoryElement" type="button" class="btn btn-success" href="javascript:void(0)"><i class="fas fa-plus"></i> Új elem</a>
+    <div id="itemTree" class="container marginTop">
+        <form action="saveCategoryElements" method="post">
+            {% csrf_token %}
+            <label for="name">Ajánlat neve</label>
+            <input type="text" name="name" required>
+            <ul>
+                {% for item in rootList %}
+                    <li>
+                        <div class="row">
+                            <div class="col-8">
+                                <a href="#firstLevel{{ forloop.counter }}" data-toggle="collapse">{{ item.description }}</a>
+                            </div>
+                        </div>
+                        <div id="firstLevel{{ forloop.counter }}" class="collapse">
+                            <ul>
+                                {% for child1 in item.children %}
+                                    <li>
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <a href="#secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                   data-toggle="collapse">{{ child1.itemNumber }} {{ child1.description }}</a>
+                                            </div>
+                                        </div>
+                                        <div id="secondLevel{{ forloop.parentloop.counter }}{{ forloop.counter }}" class="collapse">
+                                            <ul>
+                                                {% for child2 in child1.children %}
+                                                    <li>
+                                                        <div class="row">
+                                                            <div class="col-8">
+                                                                <a href="#thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                   data-toggle="collapse">{{ child2.itemNumber }} {{ child2.description }}</a>
+                                                            </div>
+                                                        </div>
+                                                        <div id="thirdLevel{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                             class="collapse">
+                                                            <ul>
+                                                                {% for child3 in child2.children %}
+                                                                    <li>
+                                                                        <div class="row">
+                                                                            <div class="col-8">
+                                                                                <a href="#fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                   data-toggle="collapse">{{ child3.itemNumber }} {{ child3.description }}</a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div id="fourthLevel{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                             class="collapse">
+                                                                            <ul>
+                                                                                {% for child4 in child3.children %}
+                                                                                    <li>
+                                                                                        <div class="row">
+                                                                                            <div class="col-8">
+                                                                                                <a href="#fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                   data-toggle="collapse">{{ child4.itemNumber }} {{ child4.description }}</a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div id="fifthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                             class="collapse">
+                                                                                            <ul>
+                                                                                                {% for child5 in child4.children %}
+                                                                                                    <li>
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-8">
+                                                                                                                <a href="#sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                                   data-toggle="collapse">{{ child5.itemNumber }} {{ child5.description }}</a>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div id="sixthLevel{{ forloop.parentloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.parentloop.counter }}{{ forloop.parentloop.parentloop.counter }}{{ forloop.parentloop.counter }}{{ forloop.counter }}"
+                                                                                                             class="collapse">
+                                                                                                            <ul>
+                                                                                                                {% for child6 in child5.children %}
+                                                                                                                    <li>
+                                                                                                                        <div class="row">
+                                                                                                                            <div class="col-8">
+                                                                                                                                {{ child6.itemNumber }} {{ child6.description }}
+                                                                                                                            </div>
+                                                                                                                            <div class="col-4 text-right">
+                                                                                                                                <input type="checkbox" name="{{ child6.id }}" value="True">
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </li>
+                                                                                                                {% endfor %}
+                                                                                                            </ul>
+                                                                                                        </div>
+                                                                                                    </li>
+                                                                                                {% endfor %}
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </li>
+                                                                                {% endfor %}
+                                                                            </ul>
+                                                                        </div>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>
+                {% endfor %}
+                <input type="submit" value="Mentés">
+            </ul>
+        </form>
     </div>
 {% endblock %}

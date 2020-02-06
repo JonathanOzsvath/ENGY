@@ -1,10 +1,10 @@
 import re
 
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from ENGY_App.forms import CategoryForm
-from ENGY_App.models import Category
+from ENGY_App.models import Category, Offer, Offers
 
 
 def home(request):
@@ -75,8 +75,30 @@ def edit(request, item_id):
 
 
 def offers(request):
-    return render(request, 'offers.html')
+    offers = Offers.objects.all()
+    return render(request, 'offers.html', {'offers': offers})
 
 
 def offer(request):
-    return render(request, 'offer.html')
+    rootList = Category.get_roots()
+    return render(request, 'offer.html', {'rootList': rootList})
+
+
+def save_category_elements(request):
+    if request.method == "POST":
+        if request.POST.get('name') != '':
+            offers_created = Offers.objects.get_or_create(name=request.POST.get('name'))
+
+            for key in request.POST:
+                if request.POST.get(key) == 'True':
+                    offer = Offer.objects.update_or_create(category_id=key, offer_id=offers_created[0].id)
+
+    return redirect('offers')
+
+
+def print(request, offer_id):
+    categoryIdList = Offer.objects.filter(offer_id=offer_id).values_list('category_id', flat=True)
+
+    categoryList = Category.objects.filter(pk__in=categoryIdList)
+
+    return render(request, 'offerDetails.html', {'categoryList': categoryList})

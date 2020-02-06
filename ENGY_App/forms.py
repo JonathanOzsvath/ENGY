@@ -8,7 +8,8 @@ class CategoryForm(forms.ModelForm):
         model = Category
         itemNumber = forms.CharField()
         fields = ['tn_parent', 'itemNumber', 'description', 'quantity', 'unit', 'unitPriceOfMaterial', 'pricePerUnit']
-        labels = {'itemNumber': 'Tételszám',
+        labels = {'tn_parent': 'Szülő',
+                  'itemNumber': 'Tételszám',
                   'description': 'Tétel szövege',
                   'quantity': 'Mennyiség',
                   'unit': 'Egység',

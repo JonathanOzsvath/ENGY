@@ -9,6 +9,13 @@
                 <th>Név</th>
                 <th>Dátum</th>
             </tr>
+            {% for offer in offers %}
+                <tr>
+                    <td>{{ offer.name }}</td>
+                    <td>{{ offer.date }}</td>
+                    <td><a href="{% url 'print' offer_id=offer.id %}"><i class="fas fa-print"></i></a></td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 {% endblock %}
