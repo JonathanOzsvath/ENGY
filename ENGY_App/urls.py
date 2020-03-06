@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^offers', views.offers, name='offers'),
     url(r'^offer', views.offer, name='offer'),
     url(r'^saveCategoryElements', views.save_category_elements, name='saveCategoryElements'),
-    url(r'^print/(?P<offer_id>[0-9]+)', views.print, name='print'),
+    url(r'^print/(?P<offer_id>[0-9]+)', views.Print.as_view(), name='print'),
 ]

@@ -102,3 +102,17 @@ def print(request, offer_id):
     categoryList = Category.objects.filter(pk__in=categoryIdList)
 
     return render(request, 'offerDetails.html', {'categoryList': categoryList})
+
+# class Print(PDFTemplateView):
+#     template_name = 'pdf/content.html'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#         categoryIdList = Offer.objects.filter(offer_id=self.kwargs.get('offer_id')).values_list('category_id', flat=True)
+#         categoryList = Category.objects.filter(pk__in=categoryIdList)
+#
+#         context['categoryList'] = categoryList
+#         return context
+
+
