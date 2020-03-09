@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'sass_processor',
     'treenode',
-    'easy_pdf',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ENGY',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'admin',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
