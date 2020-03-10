@@ -1,10 +1,12 @@
 import re
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
+from django.views.generic import View
 
 from ENGY_App.forms import CategoryForm
 from ENGY_App.models import Category, Offer, Offers
+from ENGY_App.utils import render_to_pdf
 
 
 def home(request):
@@ -96,23 +98,19 @@ def save_category_elements(request):
     return redirect('offers')
 
 
-def print(request, offer_id):
-    categoryIdList = Offer.objects.filter(offer_id=offer_id).values_list('category_id', flat=True)
-
-    categoryList = Category.objects.filter(pk__in=categoryIdList)
-
-    return render(request, 'offerDetails.html', {'categoryList': categoryList})
-
-# class Print(PDFTemplateView):
-#     template_name = 'pdf/content.html'
+# def print(request, offer_id):
+#     categoryIdList = Offer.objects.filter(offer_id=offer_id).values_list('category_id', flat=True)
 #
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
+#     categoryList = Category.objects.filter(pk__in=categoryIdList)
 #
-#         categoryIdList = Offer.objects.filter(offer_id=self.kwargs.get('offer_id')).values_list('category_id', flat=True)
-#         categoryList = Category.objects.filter(pk__in=categoryIdList)
-#
-#         context['categoryList'] = categoryList
-#         return context
+#     return render(request, 'offerDetails.html', {'categoryList': categoryList})
 
+class Print(View):
+    def get(self, request, *args, **kwargs):
+        categoryIdList = Offer.objects.filter(offer_id=self.kwargs.get('offer_id')).values_list('category_id',
+                                                                                                flat=True)
 
+        categoryList = Category.objects.filter(pk__in=categoryIdList)
+
+        pdf = render_to_pdf('pdf/content.html', {'categoryList': categoryList})
+        return HttpResponse(pdf, content_type='application/pdf')
