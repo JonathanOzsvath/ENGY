@@ -2,6 +2,13 @@
 
 {% block content %}
     <div id="content">
-        <h1>Hi there!</h1>
+        <table class="table">
+            {% for category in categoryList %}
+                <tr>
+                    <td>{{ category.itemNumber }}</td>
+                    <td>{{ category.description }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
